@@ -4342,9 +4342,12 @@ function_value_ms_64 (machine_mode orig_mode, machine_mode mode,
 	  if (valtype != NULL_TREE
 	      && !VECTOR_INTEGER_TYPE_P (valtype)
 	      && !INTEGRAL_TYPE_P (valtype)
-	      && !VECTOR_FLOAT_TYPE_P (valtype))
+	      && !VECTOR_FLOAT_TYPE_P (valtype)
+	      && !FLOAT_TYPE_P (valtype))
 	    break;
-	  if ((SCALAR_INT_MODE_P (mode) || VECTOR_MODE_P (mode))
+	  if ((SCALAR_INT_MODE_P (mode)
+	       || VECTOR_MODE_P (mode)
+	       || mode == TFmode)
 	      && !COMPLEX_MODE_P (mode))
 	    regno = FIRST_SSE_REG;
 	  break;
